@@ -37,7 +37,7 @@ class OrderService {
     this.orderRepository.save(newOrder);
 
     console.log(
-      `$ order_management_system < ${fileName} ${JSON.stringify(newOrder)}`
+      `$ order_management_system < ${fileName} \n ${JSON.stringify(newOrder)}`
     );
 
     return newOrder;
@@ -61,10 +61,11 @@ class OrderService {
     const existingItem = order.orderItems.find(
       (item) => item.product_id === product_id
     );
+
     if (existingItem) {
       if (existingItem.quantity >= 5) {
         console.log(
-          `$ order_management_system < ${fileName}  ${JSON.stringify(
+          `$ order_management_system < ${fileName} \n ${JSON.stringify(
             handleError(order.order_id, error.MAX_PRODUCTS_REACHED)
           )}`
         );
@@ -82,7 +83,7 @@ class OrderService {
     }
 
     console.log(
-      `$ order_management_system <${fileName} ${JSON.stringify(order)}`
+      `$ order_management_system <${fileName} \n ${JSON.stringify(order)}`
     );
 
     return order;
