@@ -1,7 +1,7 @@
 ```markdown
-# Teste PagoNtx
+## Teste PagoNtx
 
-Este repositório contém o teste PagoNtx, que consiste em um programa escrito em Node.js usando TypeScript e Jest para testes.
+Este repositório contém o teste PagoNtx, que consiste em um sistema de gerenciamento de pedidos capaz de realizar operações de criar pedido, adicionar produtos ao pedido, remover produtos do pedido e finalizar pedido.
 
 ## Tecnologias Utilizadas
 
