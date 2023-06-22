@@ -1,7 +1,7 @@
 import path from "path";
 import * as readline from "readline";
-import { OrderService } from "../services/orderServices";
-import { OrderRepository } from "../repository/OrderRepository";
+import { OrderService } from "../modules/order/services/orderServices";
+import { OrderRepository } from "../modules/order/repository/OrderRepository";
 import { readInputFile } from "../utils/fileUtils";
 
 const inputFileName =
@@ -15,6 +15,8 @@ readInputFile(fileName, (inputData: any) => {
   inputData.forEach((input: any) => {
     const { action, order_id, product_id } = input;
 
+    const inputDataString = JSON.stringify(input);
+    console.log(` ${inputDataString}`);
     switch (action) {
       case "CREATE_ORDER":
         orderService.createOrder(order_id);

@@ -1,3 +1,5 @@
+import { product } from "./Products";
+
 interface Order {
   order_id: number;
   status: string;
@@ -10,4 +12,4 @@ interface OrderItem {
   quantity: number;
 }
 
-export { Order, OrderItem };
+export { Order, OrderItem, product };
