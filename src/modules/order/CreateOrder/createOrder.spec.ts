@@ -1,5 +1,5 @@
 import { CreateOrder } from "./createOrder";
-import { OrderRepository } from "../repository/OrderRepository";
+import { OrderRepository } from "../repository/orderRepository";
 
 describe("Create Order", () => {
   let createOrderService: CreateOrder;
@@ -19,7 +19,7 @@ describe("Create Order", () => {
         order_id: orderId,
         status: "OPEN",
         orderItems: [],
-        totalAmount: 50,
+        totalAmount: 0,
       });
 
       const savedOrder = orderRepository.findByOrderId(orderId);

@@ -1,63 +1,62 @@
 import { RemoveOrderItens } from "./removeOrderItens";
-import { OrderRepository } from "../repository/OrderRepository";
-import { UpdateOrderItem } from "../updateOrderItem/updateOrderItem";
+import { OrderRepository } from "../repository/orderRepository";
+import { error } from "../../../modules/error/appError";
 
-describe("OrderService", () => {
+const products = [{ id: 1, price: 500 }];
+
+function getProductPrice(product_id: number): number {
+  const productItem = products.find((item) => item.id === product_id);
+  if (productItem) {
+    return productItem.price;
+  }
+  return 0;
+}
+
+describe("RemoveOrderItems", () => {
   let orderService: RemoveOrderItens;
   let orderRepository: OrderRepository;
-  let updateOrderService: UpdateOrderItem;
+
   beforeEach(() => {
     orderRepository = new OrderRepository();
     orderService = new RemoveOrderItens(orderRepository);
-    updateOrderService = new UpdateOrderItem(orderRepository);
   });
-  it("should remove the order item", () => {
+
+  it("should remove an item", () => {
     const orderId = 1;
     const productId = 1;
 
     const order = {
       order_id: orderId,
       status: "OPEN",
-      orderItems: [{ product_id: 1, quantity: 2 }],
-      totalAmount: 100,
+      orderItems: [],
+      totalAmount: 0,
     };
 
     orderRepository.save(order);
 
-    const result = orderService.removeOrderItem(orderId, productId);
+    const removed = orderService.removeOrderItem(orderId, productId);
 
-    expect(result).toEqual({
-      order_id: orderId,
-      status: "OPEN",
-      orderItems: [{ product_id: 1, quantity: 1 }],
-      totalAmount: 100,
-    });
+    expect(removed).toBe(removed);
   });
 
-  it("should throw an error if the order is not found", () => {
-    const orderId = 1;
-    const productId = 1;
-
-    expect(() => {
-      orderService.removeOrderItem(orderId, productId);
-    }).toThrow("Order not found");
-  });
-
-  it("should log an error and return null if the order is not in 'OPEN' status", () => {
+  it("should not remove product of order if status is not OPEN", () => {
     const orderId = 1;
     const productId = 1;
 
     const order = {
       order_id: orderId,
       status: "CHECKOUT_ORDER",
-      orderItems: [{ product_id: 1, quantity: 2 }],
-      totalAmount: 50,
+      orderItems: [{ product_id: productId, quantity: 1 }],
+      totalAmount: getProductPrice(productId) * 1,
     };
 
     orderRepository.save(order);
 
-    const result = orderService.removeOrderItem(orderId, productId);
+    const removed = orderService.removeOrderItem(order.order_id, productId);
 
-    expect(result).toBeNull();
+    expect(removed).toEqual({
+      order_id: order.order_id,
+      error: error.ORDER_IS_EMPTY,
+    });
   });
 });

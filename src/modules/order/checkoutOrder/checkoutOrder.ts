@@ -1,8 +1,6 @@
-import { Order } from "../entities/Order";
-import { OrderRepository } from "../repository/OrderRepository";
+import { OrderRepository } from "../repository/orderRepository";
 import { error } from "../../../modules/error/appError";
 import { getFileName } from "../../../utils/getFileName";
-import { logErrorMessage } from "../../error/messageError";
 let filePath = "C:\\Users\\fagne\\Documents\\TestePagoNxt\\ORDER_FILE.json";
 let fileName = getFileName(filePath);
 
@@ -13,11 +11,14 @@ class CheckoutOrder {
     this.orderRepository = orderRepository;
   }
 
-  public checkoutOrder(order_id: number): Order {
+  public checkoutOrder(order_id: number) {
     const order = this.orderRepository.findByOrderId(order_id);
 
     if (order && order.orderItems.length === 0) {
-      logErrorMessage(fileName, order.order_id, error.ORDER_IS_EMPTY);
+      return {
+        order_id: order.order_id,
+        error: error.ORDER_IS_EMPTY,
+      };
     }
 
     order.status = "WAITING PAYMENT";

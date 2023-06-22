@@ -1,5 +1,9 @@
-import { Order, OrderItem, product } from "../entities/Order";
-import { OrderRepository } from "../repository/OrderRepository";
+import { Order } from "../entities/Order";
+import { OrderRepository } from "../repository/orderRepository";
+import { getFileName } from "../../../utils/getFileName";
+
+const filePath = "C:\\Users\\fagne\\Documents\\TestePagoNxt\\ORDER_FILE.json";
+const fileName = getFileName(filePath);
 
 class CreateOrder {
   private createOrderRepository: OrderRepository;
@@ -18,7 +22,7 @@ class CreateOrder {
       order_id,
       status: "OPEN",
       orderItems: [],
-      totalAmount: 50,
+      totalAmount: 0,
     };
 
     this.createOrderRepository.save(createOrder);

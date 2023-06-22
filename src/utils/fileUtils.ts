@@ -14,6 +14,7 @@ function readInputFile(
       const inputData = JSON.parse(data);
       callback(inputData);
     } catch (error) {
+      console.log(error);
       console.log(
         "Entrada inválida. Certifique-se de que o arquivo está em formato JSON válido."
       );

@@ -1,8 +1,4 @@
 import { Order } from "../entities/Order";
-interface OrderItem {
-  product_id: number;
-  quantity: number;
-}
 
 class OrderRepository {
   private orders: Order[] = [];
@@ -11,8 +7,8 @@ class OrderRepository {
     return this.orders.find((order) => order.order_id === order_id);
   }
 
-  public save(order: Order): void {
-    this.orders.push(order);
+  public save(order: Order) {
+    return this.orders.push(order);
   }
 
   public removeOrderItemByProductId(
@@ -30,6 +26,7 @@ class OrderRepository {
 
     if (itemIndex !== -1) {
       const item = order.orderItems[itemIndex];
+
       if (item.quantity > 1) {
         item.quantity--;
       } else {
