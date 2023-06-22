@@ -35,6 +35,8 @@ No termianal digite o nome do arquivo. EX: ADD_ORDERS.json
 {"action": "CREATE_ORDER", "order_id": 1}
 {"action":"ADD_ORDER_ITEM","order_id":1,"product_id":1}
 
+vale ressaltar que o arquivo é no formato JSON
+
 ## Executando os Testes
 
 1. Certifique-se de ter o Node.js instalado em sua máquina. Você pode encontrá-lo em: [https://nodejs.org](https://nodejs.org)
