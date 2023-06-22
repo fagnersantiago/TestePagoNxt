@@ -1,15 +1,22 @@
 import path from "path";
 import * as readline from "readline";
-import { OrderService } from "../modules/order/services/orderServices";
-import { OrderRepository } from "../modules/order/repository/OrderRepository";
-import { readInputFile } from "../utils/fileUtils";
-
+// import { OrderService } from "../modules/order/services/orderServices";
+import { OrderRepository } from "./modules/order/repository/OrderRepository";
+import { readInputFile } from "./utils/fileUtils";
+import { CreateOrder } from "./modules/order/CreateOrder/createOrder";
+import { RemoveOrderItens } from "./modules/order/removeOrderItens/removeOrderItens";
+import { CheckoutOrder } from "./modules/order/checkoutOrder/checkoutOrder";
+import { UpdateOrderItem } from "./modules/order/updateOrderItem/updateOrderItem";
 const inputFileName =
   "C:\\Users\\fagne\\Documents\\TestePagoNxt\\ORDER_FILE.json";
 const fileName = path.basename(inputFileName);
 
 const orderRepository = new OrderRepository();
-const orderService = new OrderService(orderRepository);
+// const orderService = new OrderService(orderRepository);
+const createOrderService = new CreateOrder(orderRepository);
+const removeOrderItens = new RemoveOrderItens(orderRepository);
+const checkoutOrder = new CheckoutOrder(orderRepository);
+const updatedOrder = new UpdateOrderItem(orderRepository);
 
 readInputFile(fileName, (inputData: any) => {
   inputData.forEach((input: any) => {
@@ -19,16 +26,16 @@ readInputFile(fileName, (inputData: any) => {
     console.log(` ${inputDataString}`);
     switch (action) {
       case "CREATE_ORDER":
-        orderService.createOrder(order_id);
+        createOrderService.createOrder(order_id);
         break;
       case "ADD_ORDER_ITEM":
-        orderService.addOrderItem(order_id, product_id);
+        updatedOrder.addOrderItem(order_id, product_id);
         break;
       case "REMOVE_ORDER_ITEM":
-        orderService.removeOrderItem(order_id, product_id);
+        removeOrderItens.removeOrderItem(order_id, product_id);
         break;
       case "CHECKOUT_ORDER":
-        orderService.checkoutOrder(order_id);
+        checkoutOrder.checkoutOrder(order_id);
         break;
       default:
         console.log("Ação inválida.");

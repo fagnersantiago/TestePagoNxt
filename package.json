@@ -5,7 +5,7 @@
   "repository": "https://github.com/fagnersantiago/TestePagoNxt.git",
   "author": "<fagner.santiago@hotmail.com>",
   "scripts": {
-    "dev": "ts-node-dev --exit-child --transpile-only --ignore-watch node_modules src/main/main.ts",
+    "dev": "ts-node-dev --exit-child --transpile-only --ignore-watch node_modules src/index.ts",
     "test": "jest"
   },
   "license": "MIT",
