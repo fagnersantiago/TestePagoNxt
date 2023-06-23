@@ -10,14 +10,11 @@ class RemoveOrderItens {
 
   public removeOrderItem(order_id: number, product_id: number) {
     const order = this.orderRepository.findByOrderId(order_id);
-    if (!order) {
-      throw new Error("Order not exit");
-    }
 
     if (order.status !== "OPEN") {
       return {
         order_id: order.order_id,
-        error: error.ORDER_IS_EMPTY,
+        error: error.ORDER_ALREADY_IN_CHECKOUT,
       };
     }
 

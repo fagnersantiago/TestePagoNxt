@@ -18,7 +18,10 @@ class AddOrderItem {
     }
 
     if (order.status !== "OPEN") {
-      throw new Error("ORDER_STATUS_IS_NOT_FOUND");
+      return {
+        order_id: order.order_id,
+        error: error.ORDER_IS_NOT_OPEN,
+      };
     }
 
     const existingItem = order.orderItems.find(

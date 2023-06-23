@@ -56,7 +56,7 @@ describe("RemoveOrderItems", () => {
 
     expect(removed).toEqual({
       order_id: order.order_id,
-      error: error.ORDER_IS_EMPTY,
+      error: error.ORDER_ALREADY_IN_CHECKOUT,
     });
   });
 });

@@ -16,6 +16,7 @@ class OrderRepository {
     product_id: number
   ): Order | null {
     const order = this.findByOrderId(order_id);
+
     if (!order) {
       throw new Error("Order not found");
     }

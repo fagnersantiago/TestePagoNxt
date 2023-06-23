@@ -26,7 +26,6 @@ describe("UpdateOrderItem", () => {
   });
 
   it("should add a new order item", () => {
-    // Arrange
     const orderId = 1;
     const productId = 1;
 
@@ -39,14 +38,11 @@ describe("UpdateOrderItem", () => {
 
     orderRepository.save(order);
 
-    // Act
     let result;
     try {
       result = orderService.addOrderItem(orderId, productId);
-    } catch (error) {
-      // Handle error, if needed
-    }
-    // Assert
+    } catch (error) {}
+
     expect(result.orderItems.length).toBe(1);
     expect(result.orderItems[0]).toEqual({
       product_id: productId,
@@ -56,7 +52,6 @@ describe("UpdateOrderItem", () => {
   });
 
   it("should increment the quantity of an existing order item", () => {
-    // Arrange
     const orderId = 1;
     const productId = 1;
 
@@ -69,7 +64,6 @@ describe("UpdateOrderItem", () => {
 
     orderRepository.save(order);
 
-    // Act
     let result;
     try {
       result = orderService.addOrderItem(orderId, productId);
@@ -77,7 +71,6 @@ describe("UpdateOrderItem", () => {
       console.log(error);
     }
 
-    // Assert
     expect(result.orderItems.length).toBe(1);
     expect(result.orderItems[0]).toEqual({
       product_id: productId,
@@ -87,7 +80,6 @@ describe("UpdateOrderItem", () => {
   });
 
   it("should throw an error if the order is not found", () => {
-    // Arrange
     const orderId = 1;
     const productId = 1;
 
@@ -109,13 +101,15 @@ describe("UpdateOrderItem", () => {
 
     orderRepository.save(order);
 
-    expect(() => {
-      orderService.addOrderItem(orderId, productId);
-    }).toThrow("ORDER_STATUS_IS_NOT_FOUND");
+    const result = orderService.addOrderItem(orderId, productId);
+
+    expect(result).toEqual({
+      order_id: order.order_id,
+      error: error.ORDER_IS_NOT_OPEN,
+    });
   });
 
   it("should not be exceeding the maximum quantity of the same product", () => {
-    // Arrange
     const orderId = 1;
     const productId = 1;
 
@@ -128,7 +122,6 @@ describe("UpdateOrderItem", () => {
 
     orderRepository.save(order);
 
-    // Act
     const result = orderService.addOrderItem(order.order_id, productId);
 
     expect(result).toEqual({
