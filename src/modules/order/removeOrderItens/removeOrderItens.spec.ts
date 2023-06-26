@@ -1,6 +1,6 @@
 import { RemoveOrderItens } from "./removeOrderItens";
 import { OrderRepository } from "../repository/orderRepository";
-import { error } from "../../../modules/error/appError";
+import { error } from "../../../shared/error/appError";
 
 const products = [{ id: 1, price: 500 }];
 

@@ -1,6 +1,6 @@
 import { CheckoutOrder } from "./checkoutOrder";
 import { OrderRepository } from "../repository/orderRepository";
-import { error } from "../../error/appError";
+import { error } from "../../../shared/error/appError";
 
 describe("OrderService", () => {
   let orderService: CheckoutOrder;

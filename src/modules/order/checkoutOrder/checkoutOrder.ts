@@ -1,6 +1,6 @@
 import { OrderRepository } from "../repository/orderRepository";
-import { error } from "../../../modules/error/appError";
-import { getFileName } from "../../../utils/getFileName";
+import { error } from "../../../shared/error/appError";
+import { getFileName } from "../../../shared/utils/getFileName";
 let filePath = "C:\\Users\\fagne\\Documents\\TestePagoNxt\\ORDER_FILE.json";
 let fileName = getFileName(filePath);
 

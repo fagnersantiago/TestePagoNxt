@@ -1,7 +1,7 @@
 import { OrderItem } from "../entities/Order";
 import { OrderRepository } from "../repository/orderRepository";
-import { error } from "../../error/appError";
-import { getProductPrice } from "../../../utils/getProductPrice";
+import { error } from "../../../shared/error/appError";
+import { getProductPrice } from "../../../shared/utils/getProductPrice";
 
 class AddOrderItem {
   private orderRepository: OrderRepository;

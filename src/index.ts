@@ -1,7 +1,7 @@
 import path from "path";
 import * as readline from "readline";
 import { OrderRepository } from "./modules/order/repository/orderRepository";
-import { readInputFile } from "./utils/fileUtils";
+import { readInputFile } from "./shared/utils/fileUtils";
 import { CreateOrder } from "./modules/order/createOrder/createOrder";
 import { RemoveOrderItens } from "./modules/order/removeOrderItens/removeOrderItens";
 import { CheckoutOrder } from "./modules/order/checkoutOrder/checkoutOrder";

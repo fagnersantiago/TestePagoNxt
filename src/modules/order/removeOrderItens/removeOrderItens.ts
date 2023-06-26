@@ -1,5 +1,5 @@
 import { OrderRepository } from "../repository/orderRepository";
-import { error } from "../../../modules/error/appError";
+import { error } from "../../../shared/error/appError";
 
 class RemoveOrderItens {
   private orderRepository: OrderRepository;

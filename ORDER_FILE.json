@@ -95,8 +95,8 @@
 
 {
   "action": "REMOVE_ORDER_ITEM",
-  "order_id": 3,
-  "product_id": 3
+  "order_id": 2,
+  "product_id": 2
 },
 
 {

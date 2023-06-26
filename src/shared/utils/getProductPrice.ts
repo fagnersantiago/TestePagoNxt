@@ -1,4 +1,4 @@
-import { product } from "../modules/order/entities/Products";
+import { product } from "../../modules/order/entities/Products";
 
 export function getProductPrice(product_id: number): number {
   const productItem = product.find((item) => item.id === product_id);

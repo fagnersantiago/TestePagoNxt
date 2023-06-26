@@ -1,6 +1,6 @@
 import { Order } from "../entities/Order";
 import { OrderRepository } from "../repository/orderRepository";
-import { getFileName } from "../../../utils/getFileName";
+import { getFileName } from "../../../shared/utils/getFileName";
 
 class CreateOrder {
   private createOrderRepository: OrderRepository;

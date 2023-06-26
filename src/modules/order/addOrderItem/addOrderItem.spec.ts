@@ -1,6 +1,6 @@
 import { AddOrderItem } from "./addOrderItem";
 import { OrderRepository } from "../repository/orderRepository";
-import { error } from "../../error/appError";
+import { error } from "../../../shared/error/appError";
 
 const products = [
   { id: 1, price: 500 },
