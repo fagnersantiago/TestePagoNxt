@@ -1,8 +1,6 @@
 import { OrderRepository } from "../repository/orderRepository";
 import { error } from "../../../shared/error/appError";
 import { getFileName } from "../../../shared/utils/getFileName";
-let filePath = "C:\\Users\\fagne\\Documents\\TestePagoNxt\\ORDER_FILE.json";
-let fileName = getFileName(filePath);
 
 class CheckoutOrder {
   private orderRepository: OrderRepository;
